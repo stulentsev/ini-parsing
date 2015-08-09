@@ -72,7 +72,11 @@ RSpec.describe ConfigParser do
         expect(config.ftp.lastname).to eq nil
         expect(config.ftp.enabled).to eq false # yes, no, true, false, 1, 0
         expect(config.ftp[:path]).to eq '/srv/var/tmp'
-        expect(config.ftp).to eq({ name: 'http uploading', path: '/etc/var/uploads', enabled: false })
+        expect(config.http).to eq({ name: 'http uploading',
+                                    path: '/srv/var/tmp',
+                                    enabled: false,
+                                    params: ['array', 'of', 'values'],
+                                  })
       end
     end
 
@@ -93,13 +97,13 @@ false3 = 0
 
       it 'parses correctly' do
         aggregate_failures do
-          expect(config.true1).to eq true
-          expect(config.true2).to eq true
-          expect(config.true3).to eq true
+          expect(config.common.true1).to eq true
+          expect(config.common.true2).to eq true
+          expect(config.common.true3).to eq true
 
-          expect(config.false1).to eq false
-          expect(config.false2).to eq false
-          expect(config.false3).to eq false
+          expect(config.common.false1).to eq false
+          expect(config.common.false2).to eq false
+          expect(config.common.false3).to eq false
         end
       end
     end
