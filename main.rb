@@ -4,9 +4,9 @@ Bundler.require(:default)
 require_relative './app/imports'
 
 def load_config(file_path, overrides = [])
- file = File.open(file_path)
+  file = File.open(file_path)
   ConfigParser.new(file, overrides).call
 end
 
 
-load_config('test_file.ini', [])
+ap load_config('test_file.ini', ['ubuntu', :production])

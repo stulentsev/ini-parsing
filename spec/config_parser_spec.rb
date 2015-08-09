@@ -77,6 +77,13 @@ RSpec.describe ConfigParser do
                                     enabled: false,
                                     params: ['array', 'of', 'values'],
                                   })
+
+        expect(config.common).to eq({
+                                      basic_size_limit:      26214400,
+                                      student_size_limit:    52428800,
+                                      paid_users_size_limit: 2147483648,
+                                      path:                  '/srv/var/tmp',
+                                    })
       end
     end
 
