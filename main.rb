@@ -1,10 +1,11 @@
 require 'bundler'
 Bundler.require(:default)
 
-require_relative './imports'
+require_relative './app/imports'
 
 def load_config(file_path, overrides = [])
- puts 'working'
+ file = File.open(file_path)
+  ConfigParser.new(file, overrides).call
 end
 
 
